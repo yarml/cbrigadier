@@ -1,6 +1,7 @@
 #include <brigadier.h>
 #include <limits.h>
 #include <stdlib.h>
+#include <float.h>
 
 brigadier_node *brigadier_node_new(char *name, char *prompt, char *children_prompt)
 {
@@ -46,7 +47,18 @@ void brigadier_node_int_extra(brigadier_node *node, int min, int max)
   node->min = min;
   node->max = max;
 }
-
+void brigadier_node_float(brigadier_node *node)
+{
+  node->type = BRIGADIER_FLOAT;
+  node->fmin = FLT_MIN;
+  node->fmax = FLT_MAX;
+}
+void brigadier_node_float_extra(brigadier_node *node, float fmin, float fmax)
+{
+  node->type = BRIGADIER_FLOAT;
+  node->fmin = fmin;
+  node->fmax = fmax;
+}
 void brigadier_node_str(brigadier_node *node)
 {
   node->type = BRIGADIER_STR;

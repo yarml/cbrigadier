@@ -16,6 +16,9 @@ void brigadier_print_node(brigadier_node *node)
   case BRIGADIER_INT:
     printf("int(%d, %d)", node->min, node->max);
     break;
+  case BRIGADIER_FLOAT:
+    printf("float(%d, %d)", node->fmin, node->fmax);
+    break;
   case BRIGADIER_ENUM:
     printf("enum{ ");
     for (size_t i = 0; i < node->enum_len; ++i)

@@ -15,6 +15,7 @@ struct BRIGADIER_CMD_NODE
   {
     char *str; // BRIGADIER_STR
     int val;   // BRIGADIER_INT, BRIGADIER_ENUM
+    float fval; // BRIGADIER_FLOAT
   };
 
   brigadier_cmd_node *next;
@@ -28,5 +29,8 @@ char *brigadier_cmd_get_str(brigadier_cmd_ctx *ctx, int idx);
 
 // Get the int data of a CMD node
 int brigadier_cmd_get_val(brigadier_cmd_ctx *ctx, int idx);
+
+// Get the float data of a CMD node
+float brigadier_cmd_get_fval(brigadier_cmd_ctx *ctx, int idx);
 
 #endif

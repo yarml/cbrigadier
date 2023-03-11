@@ -14,6 +14,7 @@ enum BRIGADIER_NODE_TYPE
   BRIGADIER_LITERAL,
   BRIGADIER_STR,
   BRIGADIER_INT,
+  BRIGADIER_FLOAT,
   BRIGADIER_ENUM, // Only supports continuous enums
                   // cba to implement a full enum handler,
                   // why am i doing all this anyway, i need sleep
@@ -33,6 +34,11 @@ struct BRIGADIER_NODE
     {
       int min;
       int max;
+    };
+    struct // BRIGADIER_FLOAT
+    {
+      float fmin;
+      float fmax;
     };
     struct // BRIGADIER_ENUM
     {
@@ -64,6 +70,8 @@ void brigadier_node_clean(brigadier_node *node);
 void brigadier_node_literal(brigadier_node *node, char *literal);
 void brigadier_node_int(brigadier_node *node);
 void brigadier_node_int_extra(brigadier_node *node, int min, int max);
+void brigadier_node_float(brigadier_node *node);
+void brigadier_node_float_extra(brigadier_node *node, float fmin, float fmax);
 void brigadier_node_str(brigadier_node *node);
 void brigadier_node_str_extra(
   brigadier_node *node,

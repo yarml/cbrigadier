@@ -183,6 +183,7 @@ char *brigadier_execute(brigadier_ctx *ctx, char *cmdline)
           ++idx;
         }
         int in;
+        printf("> ");
         scanf("%d", &in);
         brigadier_internal_clearline();
         target_child_idx = in - 1;
@@ -214,6 +215,7 @@ char *brigadier_execute(brigadier_ctx *ctx, char *cmdline)
       break;
     case BRIGADIER_STR:
     case BRIGADIER_INT:
+    case BRIGADIER_FLOAT:
       {
         // Ask the user for input until they give a valid string/int
         char *input = 0;
@@ -247,6 +249,7 @@ char *brigadier_execute(brigadier_ctx *ctx, char *cmdline)
           // Display a menu of enum elements
           for(size_t i = 0; i < target_child->enum_len; ++i)
             printf("%lu. %s\n", i+1, target_child->f_display_name(i));
+          printf("> ");
           scanf("%d", &idx);
           brigadier_internal_clearline();
           --idx;

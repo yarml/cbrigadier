@@ -63,6 +63,23 @@ brigadier_cmd_node *brigadier_node_matches(brigadier_node *node, char *token)
       cmd_node->val = num;
       return cmd_node;
     }
+  case BRIGADIER_FLOAT:
+    {
+      // Check that the string is a float
+      // Copied from https://stackoverflow.com/a/45554707/21296545
+      int len;
+      float fval;
+      int ret = sscanf(token, "%f %n", &fval, &len);
+      if(!(ret==1 && !token[len]))
+      {
+        // Valid float
+        brigadier_cmd_node *cmd_node = calloc(1, sizeof(brigadier_cmd_node));
+        cmd_node->node = node;
+        cmd_node->fval = fval;
+        return cmd_node;
+      }
+      return 0;
+    }
   case BRIGADIER_ENUM:
     {
       // Check all enum elements, if one of them matches token, then this node
