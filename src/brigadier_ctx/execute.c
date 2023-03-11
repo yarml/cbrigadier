@@ -72,7 +72,7 @@ static ssize_t brigadier_internal_getdelim(
 
 static ssize_t brigadier_internal_getline(char **lineptr, size_t *n, FILE *stream)
 {
-  return getdelim(lineptr, n, '\n', stream);
+  return brigadier_internal_getdelim(lineptr, n, '\n', stream);
 }
 
 static void brigadier_internal_clearline()
