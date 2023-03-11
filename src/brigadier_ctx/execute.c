@@ -246,6 +246,7 @@ char *brigadier_execute(brigadier_ctx *ctx, char *cmdline)
         int idx;
         while(1)
         {
+          printf("%s:\n", target_child->prompt);
           // Display a menu of enum elements
           for(size_t i = 0; i < target_child->enum_len; ++i)
             printf("%lu. %s\n", i+1, target_child->f_display_name(i));
