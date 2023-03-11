@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <stdio.h>
 
 // Takes a node and a token and returns a pointer to a command node
 // if it matches, otherwise, returns 0
